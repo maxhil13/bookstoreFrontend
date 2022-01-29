@@ -1,0 +1,92 @@
+<div class="container">
+  <h2 style="margin-top: 1em">All Books</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Year</th>
+      <th scope="col">Price</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngIf="books.length == 0">
+      <td colspan="5" style="text-align: center">
+        <h2>There are no products yet.</h2>
+      </td>
+    </tr>
+
+    <tr *ngFor="let book of books">
+      <th>{{ book.id }}</th>
+      <td>{{ book.name }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.year }}</td>
+      <td>{{ book.price }}</td>
+      <td><button type="button" class="btn btn-danger" (click)="deleteBook(book.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <button type="button" class="btn btn-success" (click)="RedirectToAddBook()" style="margin-bottom: 1em">Add new book</button>
+  <br />
+
+  <h2 *ngIf="oldestBook.id >= 0" style="margin-top: 1em">Oldest Book</h2>
+  <table *ngIf="oldestBook.id >= 0; else elseBlock" class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Year</th>
+      <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+      <th>{{ oldestBook.id }}</th>
+      <td>{{ oldestBook.name }}</td>
+      <td>{{ oldestBook.author }}</td>
+      <td>{{ oldestBook.year }}</td>
+      <td>{{ oldestBook.price }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #elseBlock>
+    <button type="button" class="btn btn-success" (click)="getOldestBook()">Get oldest book</button>
+    <br />
+  </ng-template>
+
+
+  <h2 *ngIf="newestBook.id >= 0" style="margin-top: 1em">Newest Book</h2>
+  <table *ngIf="newestBook.id >= 0; else elseBlock2" class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Year</th>
+      <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+      <th>{{ newestBook.id }}</th>
+      <td>{{ newestBook.name }}</td>
+      <td>{{ newestBook.author }}</td>
+      <td>{{ newestBook.year }}</td>
+      <td>{{ newestBook.price }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #elseBlock2>
+    <button type="button" class="btn btn-success" (click)="getNewestBook()" style="margin-top: 1em">Get newest book</button>
+    <br />
+  </ng-template>
+</div>

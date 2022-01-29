@@ -1,0 +1,25 @@
+<form #addbookform="ngForm" (ngSubmit)="addbookFormSubmit(addbookform.value)" style="margin-top: 1em; margin-left: 2em; margin-right: 2em">
+  <h2>Add a book</h2>
+  <div class="form-group" style="margin-top: 1em">
+    <label>Name:</label>
+    <input type="text" class="form-control" required ngModel name="name">
+  </div>
+  <div class="form-group">
+    <label>Author:</label>
+    <input type="text" class="form-control" required ngModel name="author">
+  </div>
+  <div class="form-group">
+    <label>Year:</label>
+    <input type="text" class="form-control" required ngModel name="year">
+  </div>
+  <div class="form-group">
+    <label>Price:</label>
+    <input type="text" class="form-control" required ngModel name="price">
+  </div>
+  <button type="submit" class="btn btn-success" style="margin-top: 1em">Submit</button>
+  <button class="btn btn-secondary" style="margin-top: 1em; margin-left: 1em" (click)="goBackToViewBooks()">Back</button>
+
+  <div *ngIf="warnIsVisible" class="alert alert-danger" role="alert" style="margin-top: 1em">
+    Please fill out every field!
+  </div>
+</form>
